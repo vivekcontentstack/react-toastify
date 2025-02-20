@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom'
 
 import { POSITION, TYPE, canUseDom, isStr, isNum, isFn } from '../utils';
 import { eventManager, OnChangeCallback, Event } from './eventManager';
@@ -87,7 +87,19 @@ function dispatchToast(
       lazy = false;
       containerDomNode = document.createElement('div');
       document.body.appendChild(containerDomNode);
-      render(<ToastContainer {...containerConfig} />, containerDomNode);
+
+      let root;
+      const isReact18 = (ReactDOM as any).createRoot !== undefined;
+
+      if (isReact18) {
+        root = (ReactDOM as any).createRoot(containerDomNode);
+      }
+
+      if (isReact18) {
+        root.render(<ToastContainer {...containerConfig} />);
+      } else {
+        ReactDOM.render(<ToastContainer {...containerConfig} />, containerDomNode);
+      }
     }
   }
 
