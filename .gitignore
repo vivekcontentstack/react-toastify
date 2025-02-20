@@ -8,5 +8,5 @@ yarn-error.log
 .DS_STORE
 cjs/
 esm/
-dist/
+# dist/
 .cache
