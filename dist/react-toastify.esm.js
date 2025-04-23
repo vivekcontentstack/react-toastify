@@ -1124,6 +1124,7 @@ function dispatchToast(content, options) {
       document.body.appendChild(containerDomNode);
       var root;
       var isReact18 = ReactDOM.createRoot !== undefined;
+      console.log("isReact", isReact18, ReactDOM);
 
       if (isReact18) {
         root = ReactDOM.createRoot(containerDomNode);

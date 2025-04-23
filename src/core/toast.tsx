@@ -90,6 +90,7 @@ function dispatchToast(
 
       let root;
       const isReact18 = (ReactDOM as any).createRoot !== undefined;
+      console.log("isReact", isReact18, ReactDOM);
 
       if (isReact18) {
         root = (ReactDOM as any).createRoot(containerDomNode);
